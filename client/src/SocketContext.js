@@ -31,15 +31,19 @@ const ContextProvider=({children})=>{
         })
 
         socket.on('me',(id)=>setMe(id));
-        socket.on('calluser',({from,name:callerName,signal})=>{ //this method trigger when we server emits 'calluser' to the caller
+        socket.on('calluser',({from,name,signal})=>{ 
+            //this method trigger when we server emits 'calluser' to the caller
+            console.log(from,name,signal)
            setCall({isReceivedCall:true,from,name,signal});
+           console.log("sc calluser",call.isReceivedCall)
+
         })
     },[])    
 
     const answerCall =()=>{
 
             setCallAccepted(true)
-
+            console.log("anser call")
             const peer =new Peer({initiator:false,trickle:false,stream:stream});
 
             peer.on('signal',(data)=>{
@@ -56,10 +60,11 @@ const ContextProvider=({children})=>{
     }
 
     const callUser=(id)=>{
+        
         const peer =new Peer({initiator:true,trickle:false,stream:stream});
-
+            
             peer.on('signal',(data)=>{
-                socket.emit('calluser',{userTocall:id,signalData:data,from:me,name});
+                socket.emit('calluser',{userToCall:id,signalData:data,from:me,name});
             })
 
             peer.on('stream',(currentStream)=>{

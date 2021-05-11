@@ -4,7 +4,7 @@ import {Typography,AppBar} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core'
 import VideoPlayer from './components/VideoPlayer/VideoPlayer'
 import Options from './components/Options/Options'
-import Notifications from './components/Notifications/Notifications'
+import Notification from './components/Notifications/Notification'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -44,7 +44,7 @@ function App() {
       <VideoPlayer/>
       <Options>
 
-        <Notifications/>
+        <Notification/>
 
       </Options>
 

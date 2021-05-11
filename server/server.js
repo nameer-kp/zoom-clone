@@ -26,6 +26,7 @@ io.on('connection',(socket)=>{
     })
 
     socket.on("calluser",({userToCall,signalData,from,name})=>{
+        console.log("call from user to",from,":",userToCall)
         io.to(userToCall).emit("calluser",{signal:signalData,from,name})
         
     })
