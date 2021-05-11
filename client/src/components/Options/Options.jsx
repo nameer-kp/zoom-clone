@@ -50,7 +50,7 @@ const Options=({children})=>{
 
                         <Grid item xs={12} md={6} className ={classes.padding}>
                             <Typography gutterBottom variant="h6">Account Info</Typography>
-                            <TextField label="Name" value={name} onChange={(e)=>setName(e)} fullWidth></TextField>
+                            <TextField label="Name" value={name} onChange={(e)=>setName(e.target.value)} fullWidth></TextField>
                             <CopyToClipboard text={me} classeName={classes.margin}>
 
                                 <Button varient="contained" color="primary" fullWidth startIcon={<Assignment fontSize='large'></Assignment>}>
@@ -61,7 +61,7 @@ const Options=({children})=>{
                         </Grid>
                         <Grid item xs={12} md={6} className ={classes.padding}>
                             <Typography gutterBottom variant="h6">Make a Call</Typography>
-                            <TextField label="Name" value={idToCall} onChange={(e)=>setName(e)} fullWidth></TextField>
+                            <TextField label="Name" value={idToCall} onChange={(e)=>setIdToCall(e.target.value)} fullWidth></TextField>
                             {callAccepted && !callEnded ?(
 
                                     <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize ="large"/>
@@ -84,12 +84,12 @@ const Options=({children})=>{
 
                 </form>
 
+                {children}
 
             </Paper>
              <div>
-                Options
-                {children}
-
+               
+                
               </div>
 
         </Container>
